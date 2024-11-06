@@ -1,0 +1,109 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+@keyframes scroll-left-to-right {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(240%);
+  }
+}
+
+@keyframes scroll-right-to-left {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.footer-text {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  color: #ffffffa3;
+}
+
+@media (min-width: 640px) and (max-width: 1439px) {
+  .footer-text {
+    font-size: 10.66px;
+    line-height: 16px;
+  }
+}
+
+@media (max-width: 599px) {
+  .footer-text {
+    font-size: 16px;
+    line-height: 24px;
+  }
+}
+
+.footer-text:hover {
+  color: #ffffffd6;
+}
+
+.hover-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  border-radius: 16px;
+  background-color: #ffffff;
+  box-shadow: 0px 0px 8px 0px #07041514;
+  z-index: 20;
+  transition: box-shadow 0.3s ease-in-out;
+  transition: scale 0.3s ease-in-out;
+}
+
+.hover-box:hover {
+  box-shadow: 0px 0px 8px 0px #52e7df31, 0px 0px 12px 0px #5899c81f;
+  scale: 1.005;
+}
+
+.text-header {
+  font-weight: 500;
+  font-family: var(--font-gilory);
+  color: black;
+}
+
+@media (max-width: 640px) {
+  .text-header {
+    font-size: 30px;
+    line-height: 40px;
+    margin-bottom: 16px;
+  }
+}
+
+@media (min-width: 641px) {
+  .text-header {
+    font-size: 42px;
+    line-height: 54px;
+    margin-bottom: 20px;
+  }
+}
+@media (min-width: 1920px) {
+  .text-header {
+    font-size: 64px;
+    line-height: 80px;
+  }
+}
