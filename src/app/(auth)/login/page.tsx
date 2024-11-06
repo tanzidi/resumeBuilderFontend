@@ -2,7 +2,6 @@
 import AppleButton from "@/app/component/button/AppleButton";
 import GoogleButton from "@/app/component/button/GoogleButton";
 import Input from "@/app/component/input/Input";
-import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
