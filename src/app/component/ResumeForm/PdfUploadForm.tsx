@@ -1,13 +1,16 @@
 'use client'
 import { useState, useRef } from 'react';
 import Image from 'next/image';
-
-const PdfUploadForm = () => {
+interface PdfUploadFormProps {
+    onUploadSuccess: () => void;
+}
+const PdfUploadForm: React.FC<PdfUploadFormProps> = ({ onUploadSuccess }) => {
     const [isUploaded, setIsUploaded] = useState(false);
     const [isDragging, setIsDragging] = useState(false);
     const [isFileNotPdf, setIsFileNotPdf] = useState(false);
     const fileInputRef = useRef<HTMLInputElement>(null);
     const [file, setFile] = useState<File | null>(null);
+    const [error, setError] = useState<string | null>(null);
 
     const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         if (e.target.files && e.target.files.length > 0) {
@@ -15,7 +18,12 @@ const PdfUploadForm = () => {
             if (file.type === "application/pdf") {
                 setIsFileNotPdf(false);
                 setFile(file);
-                setTimeout(() => setIsUploaded(true), 1000);
+                setTimeout(() => {
+                    setIsUploaded(true);
+                    onUploadSuccess();
+                }, 1000);
+                
+                
             } else {
                 setIsFileNotPdf(true);
                 setTimeout(() => 1000);

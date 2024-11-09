@@ -6,6 +6,12 @@ import PdfUploadForm from '@/app/component/ResumeForm/PdfUploadForm';
 import ChatInterface from '@/app/component/ResumeForm/ChatInterface';
 
 const ResumeGpt = () => {
+
+    const [isPdfUploaded, setIsPdfUploaded] = useState(false);
+    const handlePdfUploadSuccess = () => {
+        setIsPdfUploaded(true);
+    };
+
     return (
         <div>
             <p className='text-3xl font-bold'>Resume Gpt</p>
@@ -20,8 +26,8 @@ const ResumeGpt = () => {
                     </p>
                 </div>
             </div>
-            <PdfUploadForm />
-            <ChatInterface />
+            <PdfUploadForm onUploadSuccess={handlePdfUploadSuccess} />
+            {isPdfUploaded && <ChatInterface />}
         </div>
     )
 }

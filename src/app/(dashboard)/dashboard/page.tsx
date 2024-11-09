@@ -20,7 +20,7 @@ function Dashboard() {
 
   return (
     <div>
-      <p className='text-3xl font-bold'>All Resume</p>
+      <p className='text-3xl font-bold sm:text-red-500 md:text-green-500'>All Resume</p>
       <div className="grid grid-cols-2">
         <p className="text-xl mt-3 justify-self-start">
           Create a professional resume with ease. Our builder has many customizable content options.
