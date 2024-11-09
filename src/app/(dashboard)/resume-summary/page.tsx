@@ -1,11 +1,16 @@
+'use client'
 import { Info } from 'lucide-react'
 import React from 'react'
 import Image from "next/image";
 import ResumeScoreForm from '@/app/component/ResumeForm/ResumeScoreForm';
 import PdfUplodForm from '@/app/component/ResumeForm/PdfUploadForm';
+import {useState} from 'react';
 
 const ResumeSummary = () => {
-    
+    const [isPdfUploaded, setIsPdfUploaded] = useState(false);
+    const handlePdfUploadSuccess = () => {
+        setIsPdfUploaded(true);
+    };
   return (
     <div>
         <p className='text-3xl font-bold'>Resume Summary</p>
@@ -22,7 +27,7 @@ const ResumeSummary = () => {
             
         </div>
 
-        <PdfUplodForm />
+        <PdfUplodForm onUploadSuccess={handlePdfUploadSuccess}/>
 
 
 
