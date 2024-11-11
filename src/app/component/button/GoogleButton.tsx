@@ -28,7 +28,7 @@ const GoogleButton = ({ text }: { text: string }) => {
         ></path>
         <path fill="none" d="M0 0h48v48H0z"></path>
       </svg>
-      <p className="inline font-dmSans font-medium 2xl:text-l text-base">
+      <p className="inline font-dmSans font-medium 2xl:text-lg text-base">
         {text}
       </p>
     </div>

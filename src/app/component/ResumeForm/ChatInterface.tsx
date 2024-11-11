@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from 'react';
-
+import Image from "next/image";
 
 
 const ChatInterface = () => {
@@ -49,10 +49,12 @@ const ChatInterface = () => {
                         >
                             {message.sender === 'ai' && (
                                 <div className="mr-2">
-                                    <img
-                                        src="icon/ai-chat.png"
-                                        alt="AI"
-                                        className="w-10 h-10 rounded-full border border-gray-300"
+                                    <Image
+                                        src="/icon/ai-chat.png"
+                                        alt="dummy"
+                                        height={50}
+                                        width={50}
+                                        className="mx-auto border-4 rounded-3xl h-70 w-70"
                                     />
                                 </div>
                             )}
@@ -72,10 +74,12 @@ const ChatInterface = () => {
                             </div>
                             {message.sender === 'human' && (
                                 <div className="ml-2">
-                                    <img
-                                        src="icon/human-chat.png"
-                                        alt="Human"
-                                        className="w-10 h-10 rounded-full border border-gray-300"
+                                    <Image
+                                        src="/icon/human-chat.png"
+                                        alt="dummy"
+                                        height={50}
+                                        width={50}
+                                        className="mx-auto border-4 rounded-3xl"
                                     />
                                 </div>
                             )}

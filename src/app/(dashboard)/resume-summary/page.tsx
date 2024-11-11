@@ -26,8 +26,10 @@ const ResumeSummary = () => {
             </div>
             
         </div>
-
-        <PdfUplodForm onUploadSuccess={handlePdfUploadSuccess}/>
+        <div className='mt-4'>
+            <PdfUplodForm onUploadSuccess={handlePdfUploadSuccess}/>
+        </div>
+        
 
 
 

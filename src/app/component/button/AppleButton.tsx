@@ -11,7 +11,7 @@ const AppleButton = ({ text }: { text: string }) => {
         height={21}
         className="me-4"
       />
-      <p className="inline font-dmSans font-medium 2xl:text-l text-base">
+      <p className="inline font-dmSans font-medium 2xl:text-lg text-base">
         {text}
       </p>
     </div>

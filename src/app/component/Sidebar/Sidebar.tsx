@@ -32,7 +32,7 @@ const Sidebar = () => {
                 <a
                 className={`font-dmSans text-xl flex flex-row items-center gap-x-1 px-4 py-2 rounded-lg w-full ${
                     pathName === link.href
-                    ? "text-white text-l bg-white/20 border border-white rounded-lg"
+                    ? "text-white text-lg bg-white/20 border border-white rounded-lg"
                     : "text-white/60"
                 }`}
                 >

@@ -88,7 +88,7 @@ const PdfUploadForm: React.FC<PdfUploadFormProps> = ({ onUploadSuccess }) => {
                         height={100}
                         width={100}
                     />
-                    <p className="text-l mt-3 mb-1">Failed to upload resume.</p>
+                    <p className="text-lg mt-3 mb-1">Failed to upload resume.</p>
                     <button
                         onClick={handleReupload}
                         className="mt-3 px-4 py-2 bg-[#EEEBFF] text-black rounded-3xl flex flex-row"
@@ -115,7 +115,7 @@ const PdfUploadForm: React.FC<PdfUploadFormProps> = ({ onUploadSuccess }) => {
                     >
                         Select a resume to upload
                     </p>
-                    <p className="text-s text-gray-400 mt-1">or drag and drop it here</p>
+                    <p className="text-sm text-gray-400 mt-1">or drag and drop it here</p>
                     <input
                         type="file"
                         accept="application/pdf"
@@ -133,7 +133,7 @@ const PdfUploadForm: React.FC<PdfUploadFormProps> = ({ onUploadSuccess }) => {
                         height={100}
                         width={100}
                     />
-                    <p className="text-l mt-3 mb-1">Resume uploaded successfully</p>
+                    <p className="text-lg mt-3 mb-1">Resume uploaded successfully</p>
                     <button
                         onClick={handleReupload}
                         className="mt-3 px-4 py-2 bg-[#EEEBFF] text-black rounded-3xl flex flex-row"
