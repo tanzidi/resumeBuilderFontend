@@ -13,7 +13,7 @@ const ResumeScoreForm = ({
   setFormData: React.Dispatch<React.SetStateAction<{ jobIndustry: string; jobTitle: string }>>;
 }) => {
   return (
-    <div className="border-2 rounded-lg p-5" style={{ borderColor: "#DDDFF0", backgroundColor: "#FAFAFF" }}>
+    <div className="border-2 rounded-lg md:p-5 p-3 sm:text-lg text-xs" style={{ borderColor: "#DDDFF0", backgroundColor: "#FAFAFF" }}>
       <div className="flex flex-col gap-y-4">
         <SelectInput
           label="Job Industry"
