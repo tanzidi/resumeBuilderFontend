@@ -97,7 +97,7 @@ const Login = () => {
                 Remember Me
               </p>
             </div>
-            <Link href="/forger-password" className="text-[#4929FF]">
+            <Link href="/reset-password" className="text-[#4929FF] sm:text-md text-xs">
               Forgot Password?
             </Link>
           </div>
@@ -141,13 +141,14 @@ const Login = () => {
         
       </div>
       <div
-        className="w-full flex justify-center items-center px-8 h-[50vh] sm:h-full mb-4"
+        className="hidden sm:flex w-full justify-center items-center px-8 h-[50vh] sm:h-full mb-4"
         style={{
           backgroundImage: `url(/bgImage/login-hero.png)`,
           backgroundSize: "100% 100%",
           backgroundRepeat: "no-repeat",
         }}
       >
+
         {/* <Image
           src="/bgImage/login.png"
           alt="dummy"

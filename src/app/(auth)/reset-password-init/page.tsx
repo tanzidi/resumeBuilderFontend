@@ -132,7 +132,7 @@ const ResetPasswordInit = () => {
         )}
       </div>
       <div
-        className="w-full flex justify-center items-center px-8 h-[50vh] sm:h-full mb-4"
+        className="hidden sm:flex w-full justify-center items-center px-8 h-[50vh] sm:h-full mb-4"
         style={{
           backgroundImage: `url(/bgImage/login-hero.png)`,
           backgroundSize: "100% 100%",

@@ -9,18 +9,14 @@ export default function DashboardLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <div className="flex h-screen">
+    <div className="flex h-screen overflow-hidden font-dmSans">
       <Sidebar />
-
-      <main className="flex-1 p-6 font-dmSans overflow-y-auto sm:mt-10 max-h-screen custom-scrollbar">
-        <div className="pb-16 sm:pb-0">{children}</div>
-      </main>
-
-      <style jsx>{`
-        .custom-scrollbar::-webkit-scrollbar {
-          display: none;
-        }
-      `}</style>
+      
+      <div className="flex-1 flex flex-col h-full">
+        <div className="pt-16 sm:pt-14 pb-5 sm:pb-0 h-full overflow-y-auto custom-scrollbar">
+          <div className="px-6 sm:px-10">{children}</div>
+        </div>
+      </div>
     </div>
   );
 }
