@@ -60,15 +60,15 @@ const ResumeScore = () => {
     } catch (error) {
       console.error("Error submitting form:", error);
     }
-    setResumeScore("Resume analysis result here"); // Add actual response data here
+    setResumeScore("Resume analysis result here"); 
   };
 
   const isFormValid = formData.jobIndustry && formData.jobTitle && isPdfUploaded;
 
   const handleReAnalyze = () => {
-    setResumeScore(""); // Reset resume score
-    setFormData({ jobIndustry: "", jobTitle: "" }); // Clear form data
-    setIsPdfUploaded(false); // Reset the PDF upload status
+    setResumeScore("");
+    setFormData({ jobIndustry: "", jobTitle: "" })
+    setIsPdfUploaded(false);
   };
 
   return (
@@ -78,7 +78,7 @@ const ResumeScore = () => {
         {resumeScore === "" && (
           <>
             <p className="text-lg sm:text-xl mt-3 justify-self-start">
-              Please upload your resume to get a summary of your resume with our AI-powered bot.
+              Please upload your resume to get you resume score with our AI-powered bot.
             </p>
             <div className="flex flex-row items-center justify-self-end">
               <Info className="w-5 h-5" />
@@ -90,7 +90,7 @@ const ResumeScore = () => {
         )}
       </div>
 
-      <div className="grid sm:grid-cols-2 gap-10 mt-3 sm:mt-7">
+      <div className="grid sm:grid-cols-2 gap-5 mt-3 sm:mt-7">
         {resumeScore === "" && (
           <>
             <ResumeScoreForm formData={formData} setFormData={setFormData} />
@@ -104,9 +104,9 @@ const ResumeScore = () => {
           <button
             onClick={isFormValid ? handleSubmit : undefined}
             disabled={!isFormValid}
-            className={`sm:col-span-2 w-[200px] 2xl:w-[250px] mt-4 py-[13px] 2xl:py-[15px] rounded-full transition-transform duration-700 ease-in-out 
+            className={`text-xs sm:col-span-2 w-[150px] sm:w-[200px] 2xl:w-[250px] mt-4 py-[13px] 2xl:py-[15px] rounded-full transition-transform duration-700 ease-in-out 
               ${isFormValid ? "hover:scale-105 bg-[#4929ff] text-white cursor-pointer" : "bg-gray-400 text-gray-200 cursor-not-allowed"} 
-              font-dmSans sm:text-[14px] 2xl:text-[20px] text-[16px] 2xl:leading-[32px] sm:leading-[21px] leading-[26px] font-semibold`}
+              font-dmSans sm:text-[14px] 2xl:text-[20px] 2xl:leading-[32px] sm:leading-[21px] font-semibold`}
           >
             Start Analyzing
           </button>
@@ -129,7 +129,7 @@ const ResumeScore = () => {
           <div className="mt-2">
             <ul className="">
               {resumeData.details.map((item, index) => (
-                <li key={index} className="relative pl-4 flex">
+                <li key={index} className="relative pl-4">
                   <span className="mr-2 text-[#ED5D31]">•</span>
                   <span className="mr-2 font-semibold text-[#ED5D31]">{item.title}: </span>
                   {item.description}
@@ -143,21 +143,20 @@ const ResumeScore = () => {
             landing your dream job!
           </p>
         </div>
-        
-          {/* Re-analyze Button placed below the Resume Score */}
+      
           <div className="mt-4 flex flex-col items-center justify-center">
             <button
               onClick={handleReAnalyze}
-              className="w-[200px] 2xl:w-[250px] py-[13px] 2xl:py-[15px] rounded-full bg-[#000000] text-white font-semibold"
+              className="w-[150px] sm:w-[200px] 2xl:w-[250px] py-[10px] sm:py-[13px] 2xl:py-[15px] rounded-full bg-[#000000] text-white font-semibold"
             >
               Re-analyze
             </button>
           </div>
         </>
       ) : (
-        <div className="mt-4 border-2 rounded-lg p-5 flex flex-col items-center py-10" style={{ borderColor: "#DDDFF0" }}>
-          <Image className="w-[70px] h-[70px]" src="/icon/pdf-not-uploaded-yet.png" alt="Pdf Upload" height={100} width={100} />
-          <p className="text-lg font-semibold mt-2" style={{ color: '#8C8CB8' }}>
+        <div className="mt-4 border-2 rounded-lg p-5 flex flex-col items-center py-4 sm:mb-0 mb-7 sm:py-10" style={{ borderColor: "#DDDFF0" }}>
+          <Image className="w-[40px] sm:w-[70px] h-[40px] sm:h-[70px]" src="/icon/pdf-not-uploaded-yet.png" alt="Pdf Upload" height={100} width={100} />
+          <p className="text-md sm:text-lg font-semibold mt-2" style={{ color: '#8C8CB8' }}>
             You haven’t uploaded any resume yet
           </p>
         </div>
