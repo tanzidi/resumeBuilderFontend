@@ -90,7 +90,7 @@ const ResumeScore = () => {
         )}
       </div>
 
-      <div className="grid sm:grid-cols-2 gap-5 mt-3 sm:mt-7">
+      <div className="grid xl:grid-cols-2 md:grid-cols-1 gap-5 mt-3 sm:mt-7">
         {resumeScore === "" && (
           <>
             <ResumeScoreForm formData={formData} setFormData={setFormData} />

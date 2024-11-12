@@ -56,7 +56,7 @@ const SignUp = () => {
 
       <div className="flex items-center justify-center flex-col xl:px-12 px-4 my-8">
        
-        <h1 className="2xl:text-[40px] mt-6 text-[30px] font-gilory text-center mb-2">
+        <h1 className="2xl:text-[40px] mt--2 text-[30px] font-gilory text-center mb-2">
           Sign up for an account
         </h1>
         <p className="sm:text-[16px] 2xl:text-[24px] text-[14px] 2xl:leading-[36px] sm:leading-[24px] leading-[20px] font-dmSans text-secondary font-normal mb-8 text-center">
@@ -160,9 +160,8 @@ const SignUp = () => {
        
 
       </div>
-
       <div
-        className="w-full flex justify-center items-center px-8 h-[50vh] sm:h-full mb-4"
+        className="hidden sm:flex w-full justify-center items-center px-8 h-[50vh] sm:h-full mb-4"
         style={{
           backgroundImage: `url(/bgImage/login-hero.png)`,
           backgroundSize: "100% 100%",

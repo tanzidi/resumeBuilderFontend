@@ -36,7 +36,7 @@ const ChatInterface = () => {
     }, [messages]);
 
     return (
-        <div className="fixed sm:mt-0 mt-2 bottom-50 sm:bottom-50 sm:bottom-4 right-6 w-[calc(100%-48px)] sm:w-[calc(100%-446px)] h-[calc(100vh-515px)] sm:h-[calc(100vh-430px)] border rounded-xl sm:p-5 p-2 bg-white flex flex-col">
+        <div className="fixed sm:mt-0 mt-2 bottom-50 sm:bottom-50 sm:bottom-4 right-6 md:right-9 w-[calc(100%-48px)] md:w-[calc(100%-325px)] sm:w-[calc(100%-600px)] h-[calc(100vh-550px)] sm:h-[calc(100vh-430px)] border rounded-xl sm:p-5 p-2 bg-white flex flex-col">
             <div
                 ref={messagesContainerRef}
                 className="flex flex-col h-full mb-3 p-3 rounded-lg text-xl overflow-y-auto scrollbar-container"
@@ -90,7 +90,6 @@ const ChatInterface = () => {
                         </div>
                     ))
                 )}
-                {/* This div is used to anchor the scroll */}
                 <div ref={messagesEndRef} />
             </div>
 
