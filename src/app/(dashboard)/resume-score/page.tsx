@@ -34,6 +34,10 @@ const ResumeScore = () => {
   const handlePdfUploadSuccess = () => {
     setIsPdfUploaded(true);
   };
+  
+  const handleReupload = () => {
+    console.log("reupload clicked")
+  }
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -69,16 +73,16 @@ const ResumeScore = () => {
 
   return (
     <div>
-      <p className="text-3xl font-bold">Resume Score</p>
-      <div className="grid grid-cols-2">
+      <p className="text-2xl sm:text-3xl font-bold">Resume Score</p>
+      <div className="grid sm:grid-cols-2">
         {resumeScore === "" && (
           <>
-            <p className="text-xl mt-3 justify-self-start">
+            <p className="text-lg sm:text-xl mt-3 justify-self-start">
               Please upload your resume to get a summary of your resume with our AI-powered bot.
             </p>
             <div className="flex flex-row items-center justify-self-end">
               <Info className="w-5 h-5" />
-              <p className="text-s mt-0 ml-2 text-gray-400">
+              <p className="text-xs sm:text-s mt-2 marker:sm:mt-0 ml-2 text-gray-400">
                 The file should be in PDF formate. (Other versions are coming)
               </p>
             </div>
@@ -86,11 +90,11 @@ const ResumeScore = () => {
         )}
       </div>
 
-      <div className="grid grid-cols-2 gap-10 mt-7">
+      <div className="grid sm:grid-cols-2 gap-10 mt-3 sm:mt-7">
         {resumeScore === "" && (
           <>
             <ResumeScoreForm formData={formData} setFormData={setFormData} />
-            <PdfUplodForm onUploadSuccess={handlePdfUploadSuccess} />
+            <PdfUplodForm onUploadSuccess={handlePdfUploadSuccess} onReupload={handleReupload}/>
           </>
         )}
       </div>

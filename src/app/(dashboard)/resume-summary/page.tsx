@@ -11,6 +11,9 @@ const ResumeSummary = () => {
     const handlePdfUploadSuccess = () => {
         setIsPdfUploaded(true);
     };
+    const handleReupload = () => {
+        console.log("reupload clicked");
+    }
   return (
     <div>
         <p className='text-3xl font-bold'>Resume Summary</p>
@@ -27,7 +30,7 @@ const ResumeSummary = () => {
             
         </div>
         <div className='mt-4'>
-            <PdfUplodForm onUploadSuccess={handlePdfUploadSuccess}/>
+            <PdfUplodForm onUploadSuccess={handlePdfUploadSuccess} onReupload={handleReupload}/>
         </div>
         
 
