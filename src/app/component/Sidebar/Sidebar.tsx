@@ -1,6 +1,12 @@
-'use client';
+"use client";
 
-import { BadgeCheck, Component, FileSearch2, FileText, Sparkles } from "lucide-react";
+import {
+  BadgeCheck,
+  Component,
+  FileSearch2,
+  FileText,
+  Sparkles,
+} from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -10,15 +16,38 @@ const Sidebar = () => {
 
   const links = [
     // { name: "Dashboard", href: "/dashboard", icon: <Component className="xl:w-7 xl:h-7 md:w-5 md:h-5 md:mr-1 xl:mr-2" /> },
-    { name: "Resume Builder", href: "/resume-builder", icon: <FileText className="xl:w-7 xl:h-7 md:w-5 md:h-5 md:mr-1 xl:mr-2" /> },
-    { name: "Resume Gpt", href: "/resume-gpt", icon: <Sparkles className="xl:w-7 xl:h-7 md:w-5 md:h-5 md:mr-1 xl:mr-2" /> },
-    { name: "Resume Score", href: "/resume-score", icon: <BadgeCheck className="xl:w-7 xl:h-7 md:w-5 md:h-5 md:mr-1 xl:mr-2" /> },
-    { name: "Resume Summary", href: "/resume-summary", icon: <FileSearch2 className="xl:w-7 xl:h-7 md:w-5 md:h-5 md:mr-1 xl:mr-2" /> },
+    {
+      name: "Landing Page",
+      href: "/",
+      icon: (
+        <FileText className="xl:w-7 xl:h-7 md:w-5 md:h-5 md:mr-1 xl:mr-2" />
+      ),
+    },
+    {
+      name: "Resume Gpt",
+      href: "/resume-gpt",
+      icon: (
+        <Sparkles className="xl:w-7 xl:h-7 md:w-5 md:h-5 md:mr-1 xl:mr-2" />
+      ),
+    },
+    {
+      name: "Resume Score",
+      href: "/resume-score",
+      icon: (
+        <BadgeCheck className="xl:w-7 xl:h-7 md:w-5 md:h-5 md:mr-1 xl:mr-2" />
+      ),
+    },
+    {
+      name: "Resume Summary",
+      href: "/resume-summary",
+      icon: (
+        <FileSearch2 className="xl:w-7 xl:h-7 md:w-5 md:h-5 md:mr-1 xl:mr-2" />
+      ),
+    },
   ];
 
   return (
     <nav className="fixed sm:h-full md:w-[250px] xl:w-[400px] bg-black text-white flex flex-col items-left sm:p-6 sm:gap-y-10 sm:static">
-      
       {/* Mobile Top Navbar */}
       <div className="sm:hidden fixed top-0 left-0 right-0 bg-black flex justify-between items-center p-4 border-b border-white/20">
         <Link href="/">
@@ -83,7 +112,7 @@ const Sidebar = () => {
               <div className="flex justify-center items-center mb-1">
                 {link.icon}
               </div>
-              
+
               <span className="text-xs">{link.name}</span>
             </a>
           </Link>

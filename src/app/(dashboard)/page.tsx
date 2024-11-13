@@ -1,10 +1,16 @@
-import { redirect } from "next/navigation"
+import Link from "next/link";
 
-
-function Home() {
+const LandingPage = () => {
   return (
-    redirect('/resume-builder')
-  )
-}
+    <div>
+      <h1>Landing Page</h1>
+      <Link href="/resume-builder">
+        <button className="my-20 mx-auto bg-black text-white px-8 py-2 rounded-full">
+          resume-builder
+        </button>
+      </Link>
+    </div>
+  );
+};
 
-export default Home
+export default LandingPage;
