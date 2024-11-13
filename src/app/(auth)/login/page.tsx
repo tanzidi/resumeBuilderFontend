@@ -2,6 +2,10 @@
 import AppleButton from "@/app/component/button/AppleButton";
 import GoogleButton from "@/app/component/button/GoogleButton";
 import Input from "@/app/component/input/Input";
+import config from "@/app/constant";
+import { login } from "@/app/lib/redux/authSlice";
+import { useAppDispatch } from "@/app/lib/redux/hooks";
+import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
@@ -9,11 +13,13 @@ import React, { useState } from "react";
 const Login = () => {
   const router = useRouter();
   const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const [formData, setFormData] = useState({
     email: "",
     password: "",
   });
+
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) => {
@@ -24,40 +30,59 @@ const Login = () => {
     });
   };
 
+  const dispatch = useAppDispatch();
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setSubmitting(true);
+
     try {
       setSubmitting(true);
-      const response = await fetch("http://localhost:5000/api/v1/auth/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
+      const response = await fetch(
+        config.versionOneApiBaseUrl + "/auth/login",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        }
+      );
 
       const result = await response.json();
-      console.log(result);
-      if (result?.success) {
+      if (result?.data?.accessToken) {
+        setError(null);
+        dispatch(login(result?.data?.accessToken));
         router.push("/");
+      } else {
+        setError(result?.message);
+        // add toast here
       }
     } catch (error) {
-      console.error("Error submitting form:", error);
+      setError("Something went wrong...");
     }
+
     setSubmitting(false);
   };
-
   return (
     <div className="grid min-h-screen grid-cols-1 sm:grid-cols-2 font-dmSans">
       <div className="flex items-center justify-center flex-col xl:px-12 px-4 my-8">
-
+        <Link href="/">
+          <Image
+            src="/icon/logo_black.png"
+            alt="dummy"
+            height={50}
+            width={50}
+            className="w-28"
+          />
+        </Link>
         <h1 className="2xl:text-[40px] mt-6 text-[30px] font-gilory text-center mb-2">
           Login to your account
         </h1>
         <p className="sm:text-[16px] 2xl:text-[24px] text-[14px] 2xl:leading-[36px] sm:leading-[24px] leading-[20px] font-dmSans text-secondary font-normal mb-8 text-center">
           Access your account securely and manage your preferences with ease
         </p>
-        
+
         <form
           onSubmit={handleSubmit}
           className="grid gap-4 w-full px-8 mb-4 grid-cols-2"
@@ -82,6 +107,9 @@ const Login = () => {
               value={formData.password}
             />
           </div>
+          <div className="col-span-2">
+            {error && <p className="text-red-600">{error}</p>}
+          </div>
           <div className="col-span-2 flex flex-cols justify-between items-center">
             <div>
               <input type="checkbox" name="" id="" />
@@ -97,7 +125,10 @@ const Login = () => {
                 Remember Me
               </p>
             </div>
-            <Link href="/reset-password" className="text-[#4929FF] sm:text-md text-xs">
+            <Link
+              href="/reset-password"
+              className="text-[#4929FF] sm:text-md text-xs"
+            >
               Forgot Password?
             </Link>
           </div>
@@ -132,13 +163,12 @@ const Login = () => {
           <p className="w-fit text-sm text-[#5B5A66]">or connect with</p>
           <div className="border-[#E1E4F5] border h-[2px] flex-auto"></div>
         </div>
-          <button className="w-full px-8 mt-4">
-            <GoogleButton text="Sign Up with Google" />
-          </button>
-          <button className="w-full px-8 mt-3">
-            <AppleButton text="Sign Up with Apple" />
-          </button>
-        
+        <button className="w-full px-8 mt-4">
+          <GoogleButton text="Sign Up with Google" />
+        </button>
+        <button className="w-full px-8 mt-3">
+          <AppleButton text="Sign Up with Apple" />
+        </button>
       </div>
       <div
         className="hidden sm:flex w-full justify-center items-center px-8 h-[50vh] sm:h-full mb-4"
@@ -147,16 +177,7 @@ const Login = () => {
           backgroundSize: "100% 100%",
           backgroundRepeat: "no-repeat",
         }}
-      >
-
-        {/* <Image
-          src="/bgImage/login.png"
-          alt="dummy"
-          height={466.66}
-          width={708}
-          className="mx-auto"
-        /> */}
-      </div>
+      ></div>
     </div>
   );
 };
