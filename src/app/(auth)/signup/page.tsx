@@ -2,7 +2,6 @@
 import AppleButton from "@/app/component/button/AppleButton";
 import GoogleButton from "@/app/component/button/GoogleButton";
 import Input from "@/app/component/input/Input";
-import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
@@ -53,22 +52,19 @@ const SignUp = () => {
   };
   return (
     <div className="grid min-h-screen grid-cols-1 sm:grid-cols-2 font-dmSans">
-
       <div className="flex items-center justify-center flex-col xl:px-12 px-4 my-8">
-       
         <h1 className="2xl:text-[40px] mt--2 text-[30px] font-gilory text-center mb-2">
           Sign up for an account
         </h1>
         <p className="sm:text-[16px] 2xl:text-[24px] text-[14px] 2xl:leading-[36px] sm:leading-[24px] leading-[20px] font-dmSans text-secondary font-normal mb-8 text-center">
           Create your account and start exploring all our features in minutes
         </p>
-
         <form
           onSubmit={handleSubmit}
           className="grid gap-4 w-full px-8 mb-4 grid-cols-2"
         >
           <div className="col-span-2">
-          <div className="mb-1">First Name*</div>
+            <div className="mb-1">First Name*</div>
             <Input
               name="name"
               placeholder="Full Name"
@@ -78,7 +74,7 @@ const SignUp = () => {
             />
           </div>
           <div className="col-span-2">
-          <div className="mb-1">Email*</div>
+            <div className="mb-1">Email*</div>
             <Input
               name="email"
               placeholder="Email Address"
@@ -88,7 +84,7 @@ const SignUp = () => {
             />
           </div>
           <div className="col-span-2">
-          <div className="mb-1">Password*</div>
+            <div className="mb-1">Password*</div>
             <Input
               name="password"
               placeholder="Enter Password"
@@ -144,21 +140,17 @@ const SignUp = () => {
             Login
           </Link>
         </p>
-
         <div className="flex gap-4 w-full px-8 justify-center items-center">
           <div className="border-[#E1E4F5] border h-[2px] flex-auto"></div>
           <p className="w-fit text-sm text-[#5B5A66]">or connect with</p>
           <div className="border-[#E1E4F5] border h-[2px] flex-auto"></div>
         </div>
-
         <button className="w-full px-8 mt-4">
-            <GoogleButton text="Sign Up with Google" />
-          </button>
-          <button className="w-full px-8 mt-3">
-            <AppleButton text="Sign Up with Apple" />
-          </button>
-       
-
+          <GoogleButton text="Sign Up with Google" />
+        </button>
+        <button className="w-full px-8 mt-3">
+          <AppleButton text="Sign Up with Apple" />
+        </button>
       </div>
       <div
         className="hidden sm:flex w-full justify-center items-center px-8 h-[50vh] sm:h-full mb-4"
@@ -176,7 +168,6 @@ const SignUp = () => {
           className="mx-auto"
         /> */}
       </div>
-
     </div>
   );
 };
