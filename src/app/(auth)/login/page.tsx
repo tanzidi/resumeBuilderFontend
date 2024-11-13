@@ -37,7 +37,6 @@ const Login = () => {
     setSubmitting(true);
 
     try {
-      setSubmitting(true);
       const response = await fetch(
         config.versionOneApiBaseUrl + "/auth/login",
         {
@@ -50,7 +49,7 @@ const Login = () => {
       );
 
       const result = await response.json();
-      if (result?.data?.accessToken) {
+      if (result?.success && result?.data?.accessToken) {
         setError(null);
         dispatch(login(result?.data?.accessToken));
         router.push("/");

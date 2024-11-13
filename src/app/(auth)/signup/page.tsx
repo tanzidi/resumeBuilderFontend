@@ -5,14 +5,19 @@ import Input from "@/app/component/input/Input";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
+import { useAppDispatch } from "@/app/lib/redux/hooks";
+import config from "@/app/constant";
+import { login } from "@/app/lib/redux/authSlice";
 
 const SignUp = () => {
   const router = useRouter();
   const [submitting, setSubmitting] = useState(false);
-
+  const [error, setError] = useState<string | null>(null);
   const [formData, setFormData] = useState({
-    name: "",
+    firstName: "",
+    lastName: "",
     email: "",
+    phoneNumber: "",
     password: "",
   });
 
@@ -25,12 +30,16 @@ const SignUp = () => {
       [name]: value,
     });
   };
+
+  const dispatch = useAppDispatch();
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setSubmitting(true);
+
     try {
-      setSubmitting(true);
       const response = await fetch(
-        "http://localhost:5000/api/v1/auth/sign-up",
+        config.versionOneApiBaseUrl + "/auth/sign-up",
         {
           method: "POST",
           headers: {
@@ -41,13 +50,19 @@ const SignUp = () => {
       );
 
       const result = await response.json();
-      console.log(result);
-      if (result?.success) {
+
+      if (result?.success && result?.data?.accessToken) {
+        setError(null);
+        dispatch(login(result?.data?.accessToken));
         router.push("/");
+      } else {
+        setError(result?.message);
+        // add toast here
       }
     } catch (error) {
-      console.error("Error submitting form:", error);
+      setError("Something went wrong...");
     }
+
     setSubmitting(false);
   };
   return (
@@ -66,11 +81,21 @@ const SignUp = () => {
           <div className="col-span-2">
             <div className="mb-1">First Name*</div>
             <Input
-              name="name"
-              placeholder="Full Name"
+              name="firstName"
+              placeholder="First Name"
               required
               onChange={handleChange}
-              value={formData.name}
+              value={formData.lastName}
+            />
+          </div>
+          <div className="col-span-2">
+            <div className="mb-1">Last Name*</div>
+            <Input
+              name="lastName"
+              placeholder="Last Name"
+              required
+              onChange={handleChange}
+              value={formData.lastName}
             />
           </div>
           <div className="col-span-2">
@@ -84,6 +109,16 @@ const SignUp = () => {
             />
           </div>
           <div className="col-span-2">
+            <div className="mb-1">Phone Number*</div>
+            <Input
+              name="phoneNumber"
+              placeholder="Phone Number"
+              required
+              onChange={handleChange}
+              value={formData.phoneNumber}
+            />
+          </div>
+          <div className="col-span-2">
             <div className="mb-1">Password*</div>
             <Input
               name="password"
@@ -92,6 +127,9 @@ const SignUp = () => {
               onChange={handleChange}
               value={formData.password}
             />
+          </div>
+          <div className="col-span-2">
+            {error && <p className="text-red-600">{error}</p>}
           </div>
           <div className="col-span-2 inline">
             <input type="checkbox" name="" id="" required />
